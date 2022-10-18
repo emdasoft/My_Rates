@@ -5,11 +5,7 @@ import com.emdasoft.myrates.domain.models.Rates
 import retrofit2.Response
 
 object RepositoryImpl : Repository {
-
-    override suspend fun getRates(): Response<Rates> {
-
-        return RetrofitInstance.apiService.getRates()
-
+    override suspend fun getRateList(): Response<Rates> {
+        return RetrofitInstance.apiService.getRateList()
     }
-
 }

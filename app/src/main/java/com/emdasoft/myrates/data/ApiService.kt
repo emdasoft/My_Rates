@@ -7,6 +7,6 @@ import retrofit2.http.GET
 interface ApiService {
 
     @GET("rates")
-    suspend fun getRates(): Response<Rates>
+    suspend fun getRateList(): Response<Rates>
 
 }

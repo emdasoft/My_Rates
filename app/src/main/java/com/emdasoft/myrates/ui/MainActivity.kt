@@ -1,8 +1,9 @@
 package com.emdasoft.myrates.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.emdasoft.myrates.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -15,13 +16,24 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
 
+        setupRecyclerView()
+
+    }
+
+    private fun setupRecyclerView() {
 
         viewModel.getRates()
 
-        viewModel.ratesList.observe(this) { list ->
-            println(list.body()?.rates)
+        binding.rvRates.layoutManager = LinearLayoutManager(this)
+        binding.rvRates.adapter = RatesAdapter()
+
+        viewModel.ratesList.observe(this){ list ->
+            list.body()
+                ?.let { (binding.rvRates.adapter as RatesAdapter).setData(it.rates) }
+
         }
 
 
