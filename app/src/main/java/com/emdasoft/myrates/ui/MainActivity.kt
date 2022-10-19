@@ -19,25 +19,38 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
 
-        recycleSetup()
+//        recycleSetup()
 
+        viewPagerSetup()
     }
 
-    private fun recycleSetup() {
-
-        binding.rvRates.layoutManager = LinearLayoutManager(this)
-        binding.rvRates.adapter = MainAdapter()
+    private fun viewPagerSetup(){
+        binding.viewPager2.adapter = MainAdapter()
 
         viewModel.getRates()
 
         viewModel.rateList.observe(this) { list ->
 
-            list.body()?.rates?.let { (binding.rvRates.adapter as MainAdapter).setList(it) }
+            list.body()?.rates?.let { (binding.viewPager2.adapter as MainAdapter).setList(it) }
 
         }
-
-
     }
+
+//    private fun recycleSetup() {
+//
+//        binding.rvRates.layoutManager = LinearLayoutManager(this)
+//        binding.rvRates.adapter = MainAdapter()
+//
+//        viewModel.getRates()
+//
+//        viewModel.rateList.observe(this) { list ->
+//
+//            list.body()?.rates?.let { (binding.rvRates.adapter as MainAdapter).setList(it) }
+//
+//        }
+//
+//
+//    }
 
 
 }
