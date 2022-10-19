@@ -12,30 +12,32 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var viewModel: MainViewModel
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
 
-        setupRecyclerView()
+        recycleSetup()
 
     }
 
-    private fun setupRecyclerView() {
+    private fun recycleSetup() {
+
+        binding.rvRates.layoutManager = LinearLayoutManager(this)
+        binding.rvRates.adapter = MainAdapter()
 
         viewModel.getRates()
 
-        binding.rvRates.layoutManager = LinearLayoutManager(this)
-        binding.rvRates.adapter = RatesAdapter()
+        viewModel.rateList.observe(this) { list ->
 
-        viewModel.ratesList.observe(this){ list ->
-            list.body()
-                ?.let { (binding.rvRates.adapter as RatesAdapter).setData(it.rates) }
+            list.body()?.rates?.let { (binding.rvRates.adapter as MainAdapter).setList(it) }
 
         }
 
 
     }
+
+
 }

@@ -5,6 +5,6 @@ import retrofit2.Response
 
 interface Repository {
 
-    suspend fun getRateList() : Response<Rates>
+    suspend fun getRateList(): Response<Rates>
 
 }

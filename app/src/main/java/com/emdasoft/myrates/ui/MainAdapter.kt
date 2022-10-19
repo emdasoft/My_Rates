@@ -9,28 +9,25 @@ import com.emdasoft.myrates.R
 import com.emdasoft.myrates.databinding.RateItemBinding
 import com.emdasoft.myrates.domain.models.Rate
 
-class RatesAdapter : RecyclerView.Adapter<RatesAdapter.RateViewHolder>() {
+class MainAdapter : RecyclerView.Adapter<MainAdapter.RateViewHolder>() {
 
     private var ratesList = emptyList<Rate>()
 
     class RateViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
         private val binding = RateItemBinding.bind(itemView)
         fun bind(rate: Rate) = with(binding) {
-            if (rate.name != "российских рублей") {
-                tvDate.text = rate.date
-                tvName.text = rate.name
-                tvBuy.text = rate.buyRate.toString()
-                tvSale.text = rate.sellRate.toString()
-            } else {
-                tvDate.text = rate.date
+            tvDate.text = rate.date
+            if (rate.name == "российских рублей") {
                 tvName.text = buildString {
                     append("100 ")
                     append(rate.name)
-    }
-                tvBuy.text = rate.buyRate.toString()
-                tvSale.text = rate.sellRate.toString()
-            }
+                }
+            } else tvName.text = rate.name
+            tvBuy.text = rate.buyRate.toString()
+            tvSale.text = rate.sellRate.toString()
         }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RateViewHolder {
@@ -47,7 +44,7 @@ class RatesAdapter : RecyclerView.Adapter<RatesAdapter.RateViewHolder>() {
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setData(list: List<Rate>) {
+    fun setList(list: List<Rate>) {
         ratesList = list
         notifyDataSetChanged()
     }
