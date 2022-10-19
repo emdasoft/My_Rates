@@ -11,6 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/main_text"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -18,13 +19,15 @@
             android:id="@+id/tvDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="18.10.2022"/>
+            tools:text="18.10.2022"
+            android:fontFamily="@font/aldrich"/>
 
         <TextView
             android:id="@+id/tvName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="евро"/>
+            android:fontFamily="@font/overpass"
+            tools:text="евро" />
 
         <TextView
             android:id="@+id/tvBuy"
@@ -32,14 +35,16 @@
             android:layout_height="wrap_content"
             android:textColor="@color/red"
             android:textStyle="bold"
+            android:fontFamily="@font/aldrich"
             tools:text="2.55"/>
 
         <TextView
             android:id="@+id/tvSale"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#4CAF50"
+            android:textColor="@color/green"
             android:textStyle="bold"
+            android:fontFamily="@font/aldrich"
             tools:text="2.4" />
 
 
