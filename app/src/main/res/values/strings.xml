@@ -2,4 +2,6 @@
     <string name="app_name">My Rates</string>
     <string name="alpha_developer_hub">Alfa Developer Hub</string>
     <string name="with_alfa_public_api">with Alfa Public API</string>
+    <string name="alfa_logo">Alfa logo</string>
+    <string name="update">update</string>
 </resources>

@@ -9,4 +9,8 @@
         <item name="android:windowActionBar">false</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="MyButton" parent="ShapeAppearanceOverlay.Material3.Button">
+        <item name="colorButtonNormal">@color/yellow</item>
+    </style>
 </resources>

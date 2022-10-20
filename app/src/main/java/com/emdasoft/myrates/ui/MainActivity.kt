@@ -22,6 +22,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
 
+        binding.bntUpdate.setOnClickListener{
+            viewPagerSetup()
+        }
+
         viewPagerSetup()
     }
 
